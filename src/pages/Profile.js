@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './Profile.css';
 import { defaultImgs } from "../defaultimgs";
+import TweetInFeed from "../components/TweetInFeed";
 
 const Profile = () => {
   
