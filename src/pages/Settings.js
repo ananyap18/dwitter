@@ -91,9 +91,10 @@ const Settings = () => {
             />
           </div>
         </div>
-        <div className="save" onClick={() => saveEdits()}>
+        {/* <div className="save" 
+        onClick={() => saveEdits()}>
           Save
-        </div>
+        </div> */}
       </div>
     </>
  );

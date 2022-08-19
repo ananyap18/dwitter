@@ -31,7 +31,7 @@ const Home = () => {
     <div className="pageIdentify">Home</div>
       <div className="mainContent">
         <div className="profileTweet">
-          <img src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic"></img>
+          {/* <img src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic"></img> */}
           <div className="tweetBox">
             <TextArea
               label=""
@@ -55,12 +55,12 @@ const Home = () => {
                 />
                 <Icon fill="#1DA1F2" size={20} svg="image"></Icon>
               </div>
-              <div className="tweetOptions">
+              {/* <div className="tweetOptions">
                 <div className="tweet" onClick={saveTweet}>Tweet</div>
                 <div className="tweet" onClick={maticTweet} style={{ backgroundColor: "#8247e5" }}>
                   <Icon fill="#ffffff" size={20} svg="matic" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
