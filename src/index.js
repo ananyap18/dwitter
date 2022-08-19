@@ -1,28 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { MoralisProvider } from "react-moralis";
-import { NotificationProvider } from 'web3uikit';
-
-
+import { NotificationProvider } from "web3uikit";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MoralisProvider 
-    appId="8j4406xGcqwqJqNh9u0SkislpYWrV0FHE44wGVes" 
-    serverUrl="https://boglmp9j0tjf.usemoralis.com:2053/server"        
+    <MoralisProvider
+      appId="rbSTimvfcWx7q6HVH7i8wYese97BZdImz2RJk4oR"
+      serverUrl="https://lbbdwiwq0cvj.usemoralis.com:2053/server"
     >
       <NotificationProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </NotificationProvider>
     </MoralisProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

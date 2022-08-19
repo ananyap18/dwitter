@@ -8,13 +8,25 @@ import Rightbar from "./components/Rightbar";
 import "./App.css";
 import { useMoralis } from "react-moralis";
 import { Icon, ConnectButton } from "web3uikit";
-// import {ConnectButton} from "@web3uikit/web3"
 
 const App = () => {
-  const { isAuthenticated, Moralis } = useMoralis();
+  const { authenticate, isAuthenticated, Moralis } = useMoralis();
+
+  const login = async () => {
+    if (!isAuthenticated) {
+      await authenticate({ signingMessage: "Log in using Moralis" })
+        .then(function (user) {
+          console.log("logged in user: ", user);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  };
+
   return (
     <>
-    {console.log(isAuthenticated)}
+      {console.log(isAuthenticated)}
       {isAuthenticated ? (
         <div className="page">
           <div className="sideBar">
@@ -41,12 +53,10 @@ const App = () => {
             <Rightbar />
           </div>
         </div>
-      ) 
-      :
-      (
+      ) : (
         <div className="loginPage">
-          <Icon fill="#ffffff" size={40} svg="twitter" />
-          <ConnectButton />
+          <Icon fill="#ffffff" size={40} svg="twitter" />         
+          <button onClick={login}>Login</button>
         </div>
       )}
     </>
