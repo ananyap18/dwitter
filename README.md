@@ -22,8 +22,6 @@ Users can save their tweets on the blockchain. <br>
 
 The web application was built using React and web3uikit. We made use of solidity for smart contract and moralis database for authentication and for saving user data.The application uses solidity to make a simple smart contract which is deployed on Ploygon's Mumbai Testnet (smart contract is clickable to any other EVM chain as well). React is used for the frontend of the application. On the backend, Moralis is used to interact with the smart contract as well as store user data. Lastly, web3uikit is used to enhance the UI of the application.
 
-<h2>Project Gallery📷</h2>
-
 <h2>Challenges we ran into🔴 </h2>
 
 - The initial problem we faced was the deployment of our first-ever smart contract and minting of the cryptocurrency for testing purposes. <br>
