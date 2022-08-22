@@ -7,7 +7,7 @@ import Sidebar from "./components/Sidebar";
 import Rightbar from "./components/Rightbar";
 import "./App.css";
 import { useMoralis } from "react-moralis";
-import { Icon, ConnectButton } from "web3uikit";
+import { Icon } from "web3uikit";
 
 const App = () => {
   const { authenticate, isAuthenticated, Moralis } = useMoralis();
@@ -25,8 +25,7 @@ const App = () => {
   };
 
   return (
-    <>
-      {console.log(isAuthenticated)}
+    <>    
       {isAuthenticated ? (
         <div className="page">
           <div className="sideBar">
@@ -56,7 +55,7 @@ const App = () => {
       ) : (
         <div className="loginPage">
           <Icon fill="#ffffff" size={40} svg="twitter" />         
-          <button onClick={login}>Login</button>
+          <button onClick={login}>Connect Wallet</button>
         </div>
       )}
     </>
