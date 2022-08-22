@@ -34,7 +34,6 @@ The web application was built using React and web3uikit. We made use of solidity
 
 Working on web3 project for the first time.
 
-<h2>What we learned📚</h2>
-
 <h2>What's next for Dwitter🎉</h2>
+
 Inspired by the cryptoArt moment, an additional gallery feature will be provided to users to showcase as well as sell their NFTs.
