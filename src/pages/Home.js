@@ -7,7 +7,6 @@ import TweetInFeed from "../components/TweetInFeed";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 
 const Home = () => {
-
   const { Moralis } = useMoralis();
   const user = Moralis.User.current();
   const contractProcessor = useWeb3ExecuteFunction();
@@ -18,7 +17,6 @@ const Home = () => {
   const [tweet, setTweet] = useState();
 
   async function maticTweet() {
-
     if (!tweet) return;
 
     let img;
@@ -27,37 +25,39 @@ const Home = () => {
       const file = new Moralis.File(data.name, data);
       await file.saveIPFS();
       img = file.ipfs();
-    }else{
-      img = "No Img"
+    } else {
+      img = "No Img";
     }
 
     let options = {
-      contractAddress: "0x8E452D8573e2B1e8341D3f4aCC07939247cf99c6",
+      contractAddress: "YOUR_CONTRACT_ADDRESS",
       functionName: "addTweet",
-      abi: [{
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "tweetTxt",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "tweetImg",
-            "type": "string"
-          }
-        ],
-        "name": "addTweet",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-      }],
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "tweetTxt",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "tweetImg",
+              type: "string",
+            },
+          ],
+          name: "addTweet",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+      ],
       params: {
         tweetTxt: tweet,
         tweetImg: img,
       },
-      msgValue: Moralis.Units.ETH(1),
-    }
+      msgValue: Moralis.Units.ETH(0),
+    };
 
     await contractProcessor.fetch({
       params: options,
@@ -65,16 +65,13 @@ const Home = () => {
         saveTweet();
       },
       onError: (error) => {
-        console.log(error)
-      }
+        console.log(error);
+      },
     });
-
   }
 
-
   async function saveTweet() {
-
-    if(!tweet) return;
+    if (!tweet) return;
 
     const Tweets = Moralis.Object.extend("Tweets");
 
@@ -94,7 +91,6 @@ const Home = () => {
 
     await newTweet.save();
     window.location.reload();
-
   }
 
   const onImageClick = () => {
@@ -109,10 +105,13 @@ const Home = () => {
 
   return (
     <>
-    <div className="pageIdentify">Home</div>
+      <div className="pageIdentify">Home</div>
       <div className="mainContent">
         <div className="profileTweet">
-          <img src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic"></img>
+          <img
+            src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]}
+            className="profilePic"
+          ></img>
           <div className="tweetBox">
             <TextArea
               label=""
@@ -127,25 +126,31 @@ const Home = () => {
             )}
             <div className="imgOrTweet">
               <div className="imgDiv" onClick={onImageClick}>
-              <input
+                <input
                   type="file"
                   name="file"
                   ref={inputFile}
                   onChange={changeHandler}
-                  style={{ display: "none"}}
+                  style={{ display: "none" }}
                 />
                 <Icon fill="#1DA1F2" size={20} svg="image"></Icon>
               </div>
               <div className="tweetOptions">
-                <div className="tweet" onClick={saveTweet}>Tweet</div>
-                <div className="tweet" onClick={maticTweet} style={{ backgroundColor: "#8247e5" }}>
+                <div className="tweet" onClick={saveTweet}>
+                  Tweet
+                </div>
+                <div
+                  className="tweet"
+                  onClick={maticTweet}
+                  style={{ backgroundColor: "#8247e5" }}
+                >
                   <Icon fill="#ffffff" size={20} svg="matic" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <TweetInFeed profile={false}/>
+        <TweetInFeed profile={false} />
       </div>
     </>
   );
